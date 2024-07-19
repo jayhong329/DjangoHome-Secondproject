@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Sakila
+from .models import Sakila   #.models 就是同一路徑 底下的models
 from django.http import HttpResponse
 
 # Create your views here.
@@ -25,14 +25,29 @@ def countries(request):
 def cities(request):
     # print(request.GET)  #key=value&key=value => {'key':['value']}
     # print(request.GET['id'])
-    id = request.GET.get("id",1)
-    country = request.GET.get("country", "")
+    id = request.GET.get('id', 1)
+    country = request.GET.get('country', '')
+    # print(id)
+    # print(country)
 
     # 跟Model要資料
     cities = Sakila.cities(id)
-    print(cities)
     # render()第三個參數，把資料傳給 Template
-    return render(request, 'cities.html', {'cities':cities, 'country':country})
+    return render(request, 'home/cities.html', {'cities':cities, 'country':country})
+
+
+
+# def cities(request):
+#     # print(request.GET)  #key=value&key=value => {'key':['value']}
+#     # print(request.GET['id'])
+#     id = request.GET.get("id",1)
+#     country = request.GET.get("country", "")
+
+#     # 跟Model要資料
+#     cities = Sakila.cities(id)
+#     print(cities)
+#     # render()第三個參數，把資料傳給 Template
+#     return render(request, 'cities.html', {'cities':cities, 'country':country})
 
 
 

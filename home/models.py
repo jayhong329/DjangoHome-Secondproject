@@ -14,7 +14,7 @@ class Sakila:
             return categories
         
     
-    # 根據國家編號讀取城市資料
+    # 根據國家編號 讀取城市資料
     def cities(id=1):
         with connection.cursor() as cursor:
             cursor.execute(f"select city_id, city from sakila.city where country_id = {id}")

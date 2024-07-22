@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Sakila   #.models 就是同一路徑 底下的models
 from django.http import HttpResponse
+from datetime import datetime
 
 # Create your views here.
 def index(request):
@@ -14,7 +15,13 @@ def index(request):
 
     return render(request, 'home/index.html', {'id':id, 'country': country})
 
-def about (request):
+def about (request, year = None):
+    if year == None :
+        html = '<h2> 關於 {} 年的我們 </h2>'.format(datetime.now().year)
+    else :
+        html = '<h2> 關於 {} 年的我們 </h2>'.format(year)
+    print(html)
+
     return render(request, 'home/about.html')
 
 def categories(request):

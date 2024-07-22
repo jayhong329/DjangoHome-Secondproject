@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
@@ -41,9 +42,26 @@ def register(request):
         email = request.POST.get('useremail')
         # 接收上傳的檔案
         userphoto = request.FILES.get('userphoto')
+
+        # 檔案名稱
+        file_name = userphoto.name
+        # 檔案大小
+        file_size = userphoto.size
+        # 檔案類型
+        file_type = userphoto.content_type
+
         print(name)
         print(email)
         print(userphoto)
+        print(f'檔案名稱: {file_name}')
+        print(f'檔案大小: {file_size}')
+        print(f'檔案類型: {file_type}')
+
+        # 上傳檔案
+        fs = FileSystemStorage()
+        upload_file = fs.save(file_name, userphoto)
+        print(f'upload file: {upload_file}')
+
 
     return render(request, 'member/register.html')
 

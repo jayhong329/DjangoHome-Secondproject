@@ -39,8 +39,10 @@ def register(request):
     if request.method == 'POST':
         name = request.POST.get('username')
         email = request.POST.get('useremail')
+        userphoto = request.FILES.get('userphoto')
         print(name)
         print(email)
+        print(userphoto)
 
     return render(request, 'member/register.html')
 

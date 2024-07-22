@@ -32,6 +32,13 @@ def index(request):
         name = 'Django'
     html = f'<h2>Hello {name}</h2>'
 
+    response = HttpResponse(html)
+    response.status_code = 200
+    # [{},{}]
+    # response['Contwnt-Type'] = 'application/json'
+    # response.encoding = 'utf-8'
+
+
     return HttpResponse(html)
     # return render(request, 'member/index.html')
 

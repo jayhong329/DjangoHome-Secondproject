@@ -22,13 +22,14 @@ from member import views as member_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),  #https://127.0.0.1:8000
+    path('',views.index),  #https://127.0.0.1:8000/
     path('home/',views.index),  #https://127.0.0.1:8000/home/
     path('countries/',views.countries),  #https://127.0.0.1:8000/countries/
     path('about/',views.about),  #https://127.0.0.1:8000/about/
     path('categories/',views.categories),  #https://127.0.0.1:8000/categories/
     path('cities/',views.cities),  #https://127.0.0.1:8000/cities/
     # path('member/mobile/', views.mobile),   # http://127.0.0.1:8000/member/mobile/
-    path('member/', member_view.index),   # http://127.0.0.1:8000/member
-    path('member/register/', views.register),   # http://127.0.0.1:8000/member/mobile/
+    path('member/', member_view.index),   # http://127.0.0.1:8000/member/
+    path('member/mobile/', member_view.mobile),   # http://127.0.0.1:8000/member/mobile/
+    path('member/register/', member_view.register),   # http://127.0.0.1:8000/member/register/
 ]

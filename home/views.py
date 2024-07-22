@@ -4,7 +4,15 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return render(request, 'home/index.html')
+    # 讀取透過 GET 傳過來的 ?id= 10 的資料
+    id = request.GET.get('id')
+    country = ''
+
+    if request.method == 'POST':
+        # 讀取透過 POST 傳過來的表單資料
+        country = request.POST.get('country')
+
+    return render(request, 'home/index.html', {'id':id, 'country': country})
 
 def about (request):
     return render(request, 'home/about.html')

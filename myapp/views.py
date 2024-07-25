@@ -14,7 +14,8 @@ def index(request):
 
 # 2000 會傳給 year 這個參數
 def about(request, year=datetime.now().year):
-    return HttpResponse(f'<h2>ABOUT {year}</h2>')
+    # return HttpResponse(f'<h2>ABOUT {year}</h2>')
+    return render(request, 'myapp/about.html', {'year': year} )
 
 # uuid 是唯一辨識碼
 def details(request, product_id=''):

@@ -20,4 +20,7 @@ urlpatterns = [
 
     #https://127.0.0.1:8000/store/course/
     path('course/<slug:course_name>', views.course),
+
+    #https://127.0.0.1:8000/store/info/
+    path('member_info/', views.member_info),
 ]

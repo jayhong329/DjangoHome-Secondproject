@@ -28,3 +28,6 @@ def blog(request, publish= None):
 # course_name => python-web-framework
 def course(request, course_name= None):
     return HttpResponse(f'<h2>課程名稱: {course_name}</h2>')
+
+def member_info(request, course_name= None):
+    return render(request, 'myapp/member_info.html')

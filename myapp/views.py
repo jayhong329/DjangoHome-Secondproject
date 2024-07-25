@@ -5,8 +5,8 @@ from datetime import datetime
 # Create your views here.
 
 def index(request):
-    return HttpResponse('<h2>我的APP 首頁</h2>')
-    #return render(request, )
+    # return HttpResponse('<h2>我的APP 首頁</h2>')
+    return render(request, 'myapp/index.html')
 
 # 2000 會傳給 year 這個參數
 def about(request, year=datetime.now().year):

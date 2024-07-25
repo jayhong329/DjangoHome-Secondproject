@@ -23,7 +23,9 @@ from member import views as member_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', include('home.urls')),  #載入 home 下面的 urls.py
+    #https://127.0.0.1:8000/member/
     path ('member/', include('member.urls')),  #載入 member 下面的 urls.py
-
+    #https://127.0.0.1:8000/store/
+    path ('store/', include('myapp.urls')),  #載入 myapp 下面的 urls.py
 ]
  

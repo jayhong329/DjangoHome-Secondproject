@@ -6,11 +6,13 @@ from datetime import datetime
 
 def index(request):
     # return HttpResponse('<h2>我的APP 首頁</h2>')
-    store_title= '商城首頁...'
+    title= 'hello django'
+    text = "a description, either true or imagined, of a connected series of events a description, either true or imagined, of a connected series of events a description, either true or imagined, of a connected series of events"
     now = datetime.now()
     id = '123e4567-e89b-12d3-a456-426655440000'
-    # return render(request, 'myapp/index.html', {'title': store_title, 'now':now} )
+    # return render(request, 'myapp/index.html', {'title': title, 'now':now} )
     return render(request, 'myapp/index.html', locals() )
+
 
 # 2000 會傳給 year 這個參數
 def about(request, year=datetime.now().year):

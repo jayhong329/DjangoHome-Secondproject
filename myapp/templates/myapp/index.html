@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<h2>APP首頁</h2>
+<h2>{{ title | title }}</h2>
 {% endblock %}
 
 {% block content %}
-<h2>{{ store_title }} {{ now }}</h2>
+<p>{{ now}}</p>
+<p>{{ now | date:"Y-m-d D"  }}</p>
+<p>{{ now | time:"H:i:s A"  }}</p>
+<p>{{ text | truncatechars:100 }}</p>
+<p>{{ text | wordwrap:50 }}</p>
+<p style="white-space: pre;">{{ text | wordwrap:50 }}</p>
 <p>{{ id }}</p>
 {% endblock %}

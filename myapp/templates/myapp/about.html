@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 <h2>關於我們</h2>
 {% endblock %}
 
 {% block content %}
 <h2>About {{ year }}</h2>
+<img src="{% static 'myapp/images/cat.png' %}" style="width: 50%" />
 {% endblock %}

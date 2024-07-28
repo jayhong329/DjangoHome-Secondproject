@@ -6,7 +6,7 @@ from datetime import datetime
 
 def index(request):
     # return HttpResponse('<h2>我的APP 首頁</h2>')
-    title= 'hello django'
+    title= 'hello myapp'
     text = "a description, either true or imagined, of a connected series of events a description, either true or imagined, of a connected series of events a description, either true or imagined, of a connected series of events"
     now = datetime.now()
     id = '123e4567-e89b-12d3-a456-426655440000'

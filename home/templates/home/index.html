@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-</head>
-<body>
-    <H1>HomePage</H1>
+{% extends 'base.html'%}
+
+{% block title %}
+<H1>HOME首頁</H1>
+{% endblock %}
+
+
+{% block content %}
+
     <a href="/">首頁</a>
     <a href="/?id=8">Australia</a>
     <a href="/?id=15">Brazil</a>
@@ -21,5 +21,4 @@
 
     <p>根據國家代號{{  id  }} 讀出相關資料</p>
     <p>國家名稱: {{ country }}</p>
-</body>
-</html>
+    {% endblock %}

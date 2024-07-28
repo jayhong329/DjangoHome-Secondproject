@@ -1,7 +1,8 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <!-- <a class="navbar-brand" href="/"> -->
+      <a class="navbar-brand" href="{% url 'home:index' %}">
         <img src="{% static 'images/catsmile.png' %}" alt="Bootstrap" width="50" height="40">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,9 +10,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          <a class="nav-link" href="#">Features</a>
-          <a class="nav-link" href="#">Pricing</a>
+          <!-- <a class="nav-link active" aria-current="page" href="/store">Home</a> -->
+          <a class="nav-link active" aria-current="page" href="{% url 'myapp:index'%}">App Home</a>
+          <!-- <a class="nav-link" href="/store/about">about</a> -->
+          <a class="nav-link" href="{% url 'myapp:about'%}">about</a>
+          <!-- <a class="nav-link" href="/store/show">show</a> -->
+          <a class="nav-link" href="{% url 'myapp:show' %}">show</a>
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </div>
       </div>

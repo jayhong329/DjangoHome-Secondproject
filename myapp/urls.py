@@ -23,4 +23,7 @@ urlpatterns = [
 
     #https://127.0.0.1:8000/store/info/
     path('member_info/', views.member_info),
+
+    #https://127.0.0.1:8000/store/show/
+    path('show/', views.show),
 ]

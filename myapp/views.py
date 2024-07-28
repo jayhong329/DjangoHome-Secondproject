@@ -33,3 +33,7 @@ def course(request, course_name= None):
 
 def member_info(request, course_name= None):
     return render(request, 'myapp/member_info.html')
+
+def show(request):
+    title = 'store show'
+    return render(request, 'myapp/show.html', {'title': title})

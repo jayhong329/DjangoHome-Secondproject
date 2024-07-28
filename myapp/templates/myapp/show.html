@@ -1,0 +1,29 @@
+{% extends  'base.html' %}
+
+{% block styles %}
+<style>
+    h3{color: brown;}
+    p{background-color: salmon;}
+</style>
+{% endblock %}
+
+
+{% block title %}
+<h3>{{ title | title }}</h3>
+{% endblock %}
+
+{% block content %}
+<p>這是來自show templates的內容</p>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const theP = document.querySelector("p")
+    theP.addEventListener("mouseover",()=>{
+        theP.style.backgroundColor = "lightgreen"
+    })
+    theP.addEventListener("mouseout",()=>{
+        theP.style.backgroundColor = "salmon"
+    })
+</script>
+{% endblock %}

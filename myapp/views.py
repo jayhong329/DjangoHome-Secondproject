@@ -37,3 +37,12 @@ def member_info(request, course_name= None):
 def show(request):
     title = 'store show'
     return render(request, 'myapp/show.html', {'title': title})
+
+def abc(request):
+    user = {'name':'Jack','age':40}
+    users = [{'name':'Jack','email':'Jack@gmail.com','age':32},
+             {'name':'Mary','email':'Mary@gmail.com','age':26},
+             {'name':'Tom','email':'Tom@gmail.com','age':41}]
+    title = 'Template 練習'
+    return render(request, 'myapp/abc.html', locals())
+    # return render(request, 'myapp/abc.html', {'user': user,'users': users,'title': title})

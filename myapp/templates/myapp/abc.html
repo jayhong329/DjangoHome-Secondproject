@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>abc page</p>
+<p>{{ user }}</p>
+
+{% if user.age >= 40 %}
+<p style="background-color: blue; color: azure;">{{ user.name }}</p>
+{% elif user.age >= 30 %}
+<p style="background-color: gold; color: azure;">{{ user.name }}</p>
+{% else %}
+<p style="background-color: red; color: azure;">{{ user.name }}</p>
+{% endif %}
+<hr /> 
+
+{{ users }}
+<table>
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>電子郵箱</th>
+            <th>年紀</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aUser in users|dictsort:"age" %}
+        <tr>
+            <td>{{ aUser.name }}</td>
+            <td>{{ aUser.email }}</td>
+            <td>{{ aUser.age }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+{% block title %}
+<h2>{{ title }}</h2>
+{% endblock %}
+
+{% block style %}
+<style>
+    p{background-color: cyan;}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const theP = document.querySelector('p')
+    theP.addEventListener('click',()=>{
+        theP.style.backgroundColor = 'yellow'
+    })
+</script>
+{% endblock %}

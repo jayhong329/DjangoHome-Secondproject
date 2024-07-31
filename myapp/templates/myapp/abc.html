@@ -15,7 +15,7 @@
 <hr /> 
 
 {{ users }}
-<table>
+<table class="table table-bordered border-primary">
     <thead>
         <tr>
             <th>姓名</th>
@@ -25,7 +25,7 @@
     </thead>
     <tbody>
         {% for aUser in users|dictsort:"age" %}
-        <tr>
+        <tr class="{% cycle 'table-success' 'table-warning'%}">
             <td>{{ aUser.name }}</td>
             <td>{{ aUser.email }}</td>
             <td>{{ aUser.age }}</td>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
+from .models import Member
 
 # Create your views here.
 def index(request):
@@ -27,21 +28,53 @@ def index(request):
     # print(request.method)  # GET
 
     # 讀取透過GET 傳過來的資料 ?key=value
-    name = request.GET.get('username')  #讀不到 username 回傳 None
-    if name == None:
-        name = 'Django'
-    html = f'<h2>Hello {name}</h2>'
+    # name = request.GET.get('username')  #讀不到 username 回傳 None
+    # if name == None:
+    #     name = 'Django'
+    # html = f'<h2>Hello {name}</h2>'
 
-    response = HttpResponse(html)
-    response.status_code = 200
+    # response = HttpResponse(html)
+    # response.status_code = 200
     # [{},{}]
     # response['Contwnt-Type'] = 'application/json'
     # response.encoding = 'utf-8'
 
 
-    return HttpResponse(html)
+    # return HttpResponse(html)
     # return render(request, 'member/index.html')
 
+    # 資料庫的操作
+    # 資料新增
+    # Member.objects.create(
+    #     member_name = "Jeremy",
+    #     member_password = "123456",
+    #     member_birth = "1987-08-22",
+    #     member_email = "Jeremy@gmail.com"
+    # )
+    
+    # 讀取所有會員資料
+    # members = Member.objects.all()
+    # print(members)
+
+    # 讀取單筆會員資料
+    # member = Member.objects.get(member_id=2)
+    # print(member)
+
+    # 修改資料
+    # 1. 先找到要修改的資料
+    # member = Member.objects.get(member_id=2)
+    # 2.進行修改
+    # member.member_name = "Jaybrother"
+    # member.member_birth = "1986-03-29"
+    # member.save()
+    # 3.將修改後結果更新於資料庫
+
+    # 刪除資料
+    # 1. 先找到要修改的資料
+    member = Member.objects.get(member_id=1)
+    # 2.進行刪除
+    member.delete()
+    return HttpResponse("資料庫操作練習")
 
 def register(request):
     if request.method == 'POST':

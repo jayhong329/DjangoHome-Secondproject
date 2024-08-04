@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 from .models import Member
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def index(request):
@@ -87,7 +88,7 @@ def register(request):
         # 將表單傳過來的資料寫進資料庫
         Member.objects.create(
         member_name = name,
-        member_password = password,
+        member_password = make_password(password),
         member_birth = birth,
         member_email = email
     )

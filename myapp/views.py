@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from .models import Category
 
 # Create your views here.
 
@@ -35,8 +36,20 @@ def member_info(request, course_name= None):
     return render(request, 'myapp/member_info.html')
 
 def show(request):
-    title = 'store show'
-    return render(request, 'myapp/show.html', {'title': title})
+    title = '資料庫的讀取'
+
+    # 跟 Model 要資料
+    categories = Category.all()
+    categories_one = Category.single(1)
+    # categories_insert = Category.create("Jeremy")
+    # categories_update = Category.update(20, "ROSA")
+    categories_delete = Category.delete(23)
+    # print(categories)
+
+    # 打資料傳給 templates ，透過 render() 第三個參數，傳入一個{}結構的資料
+    # return render(request, 'myapp/show.html', {'title': title, 'categories': categories})
+    return render(request, 'myapp/show.html', locals())
+
 
 def abc(request):
     user = {'name':'Jack','age':40}

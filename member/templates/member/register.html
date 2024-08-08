@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- 
-    檔案上傳表單的必要設定
-    1. form 標籤 enctype="multipart/form-data"
-    2. <input type="file" name="xxxx">
-    -->
+{% extends "base.html"%}
 
-    <h2>會員註冊</h2>
+{% block title %}
+<h2>會員註冊</h2>
+{% endblock %}
+
+{% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
@@ -32,5 +24,4 @@
         </div>
         <button type="submit">註冊</button>
     </form>
-</body>
-</html>
+{% endblock %}

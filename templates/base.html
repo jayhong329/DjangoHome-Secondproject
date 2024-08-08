@@ -14,11 +14,13 @@
     <div class="container">
         {% include 'navbar.html' %}
     </div>
-    {% block title %}
     <h1>Hello, 首頁!</h1>
+
+    {% block title %}
+    <h1>MY Title</h1>
     {% endblock %}
     
-    <div class="form-floating mb-3">
+    <!-- <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">Email address</label>
       </div>
@@ -27,13 +29,11 @@
         <label for="floatingPassword">Password</label>
       </div>
       <div class = "pb-3" >
-      </div>
+      </div> -->
 
       <div class="card">
         <h5 class="card-header">
-
-            <p>MY Title</p>
-
+          
         </h5>
         <div class="card-body">
               {% block content %}

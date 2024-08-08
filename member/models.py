@@ -8,7 +8,8 @@ class Member(models.Model):
     member_password = models.CharField(max_length=128)
     member_birth = models.DateField()
     member_email = models.EmailField(max_length=200, unique=True, default='')
-    last_update = models.DateField(default=datetime.now())
+    member_avatar = models.CharField(max_length=100, default="empty.png")
+    last_update = models.DateTimeField(default=datetime.now())
 
 class Meta:
     dc_table = "member"  #指定的資料表名稱 

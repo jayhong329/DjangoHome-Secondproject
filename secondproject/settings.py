@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  # 要在 template 用到 MEDIA_URL
 ]
 
 ROOT_URLCONF = 'secondproject.urls'
@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -138,5 +139,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 上傳檔案
 # C:\Users\User\Desktop\Django\secondproject\uploads
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/media/'  #路徑名稱
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')

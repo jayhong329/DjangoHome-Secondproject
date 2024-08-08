@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 from .models import Member
@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def index(request):
-    html = '<h2>Hello Django</h2>'
+    # html = '<h2>Hello Django</h2>'
     # print(request.headers)  #用終端機 讀出所有 headers內含有的資料
 
     # 讀出 headers 裡面某類型的資料
@@ -72,10 +72,14 @@ def index(request):
 
     # 刪除資料
     # 1. 先找到要修改的資料
-    member = Member.objects.get(member_id=1)
+    # member = Member.objects.get(member_id=1)
     # 2.進行刪除
-    member.delete()
-    return HttpResponse("資料庫操作練習")
+    # member.delete()
+    # return HttpResponse("資料庫操作練習")
+
+    #讀取會員所有資料
+    members = Member.objects.all()
+    return render(request, "member/index.html", {"members":members} )
 
 def register(request):
     if request.method == 'POST':
@@ -85,35 +89,40 @@ def register(request):
         password = request.POST.get('userpassword')
         birth = request.POST.get('userbirth')
 
-        # 將表單傳過來的資料寫進資料庫
-        Member.objects.create(
-        member_name = name,
-        member_password = make_password(password),
-        member_birth = birth,
-        member_email = email
-    )
-        
+
         # 接收上傳的檔案
         userphoto = request.FILES.get('userphoto')
 
-        # 檔案名稱
+        # # 檔案名稱
         file_name = userphoto.name
-        # 檔案大小
-        file_size = userphoto.size
-        # 檔案類型
-        file_type = userphoto.content_type
+        # # 檔案大小
+        # file_size = userphoto.size
+        # # 檔案類型
+        # file_type = userphoto.content_type
 
-        print(name)
-        print(email)
-        print(userphoto)
-        print(f'檔案名稱: {file_name}')
-        print(f'檔案大小: {file_size}')
-        print(f'檔案類型: {file_type}')
+        # print(name)
+        # print(email)
+        # print(userphoto)
+        # print(f'檔案名稱: {file_name}')
+        # print(f'檔案大小: {file_size}')
+        # print(f'檔案類型: {file_type}')
 
-        # 上傳檔案
+        # 將上傳檔案儲存到 uploads資料夾
         fs = FileSystemStorage()
         upload_file = fs.save(file_name, userphoto)
-        print(f'upload file: {upload_file}')
+        # print(f'upload file: {upload_file}')
+
+
+        # 將表單傳過來的資料寫進資料庫
+        Member.objects.create(
+            member_name = name,
+            member_password = make_password(password),
+            member_birth = birth,
+            member_email = email,
+            member_avatar = upload_file
+        )
+        return redirect('member: index')
+        
 
 
     return render(request, 'member/register.html')

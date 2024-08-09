@@ -11,5 +11,5 @@ class Member(models.Model):
     member_avatar = models.CharField(max_length=100, default="empty.png")
     last_update = models.DateTimeField(default=datetime.now())
 
-class Meta:
-    dc_table = "member"  #指定的資料表名稱 
+    class Meta:
+        db_table = "member"  #指定的資料表名稱

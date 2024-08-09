@@ -47,10 +47,10 @@ def index(request):
     # 資料庫的操作
     # 資料新增
     # Member.objects.create(
-    #     member_name = "Jeremy",
+    #     member_name = "qweasd",
     #     member_password = "123456",
-    #     member_birth = "1987-08-22",
-    #     member_email = "Jeremy@gmail.com"
+    #     member_birth = "2028-04-28",
+    #     member_email = "qweasd@gmail.com"
     # )
     
     # 讀取所有會員資料
@@ -63,16 +63,16 @@ def index(request):
 
     # 修改資料
     # 1. 先找到要修改的資料
-    # member = Member.objects.get(member_id=2)
+    # member = Member.objects.get(member_id=1)
     # 2.進行修改
-    # member.member_name = "Jaybrother"
-    # member.member_birth = "1986-03-29"
+    # member.member_name = "Jaymom"
+    # member.member_birth = "1962-02-10"
     # member.save()
     # 3.將修改後結果更新於資料庫
 
     # 刪除資料
     # 1. 先找到要修改的資料
-    # member = Member.objects.get(member_id=1)
+    # member = Member.objects.get(member_id=5)
     # 2.進行刪除
     # member.delete()
     # return HttpResponse("資料庫操作練習")
@@ -121,7 +121,8 @@ def register(request):
             member_email = email,
             member_avatar = upload_file
         )
-        return redirect('member: index')
+        return redirect('member:index')
+        # return HttpResponseRedirect('/member/')
         
 
 

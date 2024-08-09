@@ -14,11 +14,8 @@
     <div class="container">
         {% include 'navbar.html' %}
     </div>
-    <h1>Hello, 首頁!</h1>
 
-    {% block title %}
-    <h1>MY Title</h1>
-    {% endblock %}
+    
     
     <!-- <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -33,7 +30,9 @@
 
       <div class="card">
         <h5 class="card-header">
-          
+          {% block title %}
+          <h1>MY Title</h1>
+          {% endblock %}
         </h5>
         <div class="card-body">
               {% block content %}

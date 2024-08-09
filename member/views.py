@@ -82,6 +82,8 @@ def index(request):
     return render(request, "member/index.html", {"members":members} )
 
 def register(request):
+
+
     if request.method == 'POST':
         # 接收使用者上傳的資料
         name = request.POST.get('username')
@@ -128,5 +130,40 @@ def register(request):
 
     return render(request, 'member/register.html')
 
+# /edit/?id=2
+def edit(request):
+    if request.method == "POST":
+        # 接收使用者上傳的資料
+        id = request.POST.get("userid")
+        name = request.POST.get('username')
+        email = request.POST.get('useremail')
+        birth = request.POST.get('userbirth')
+        # 接收上傳的檔案
+        userphoto = request.FILES.get('userphoto')
+        file_name = userphoto.name
+        # 將上傳檔案儲存到 uploads資料夾
+        fs = FileSystemStorage()
+        upload_file = fs.save(file_name, userphoto)
+        # 修改到資料庫
+        member = Member.objects.get(member_id=id)
+        member.member_name = name
+        member.member_email = email
+        member.member_birth = birth
+        member.member_avatar = upload_file
+        member.save()
+        return redirect('member:index')
+
+
+    id = request.GET.get("id", 1)
+    member = Member.objects.get(member_id=id)
+    return render(request, "member/edit.html", {"member":member})
+
+# /delete/1
+def delete(request, id):
+    member = Member.objects.get(member_id=id)
+    member.delete()
+    return redirect('member:index')
+
 def mobile(request):
     return HttpResponse('<h2>Mobile Page</h2>')
+

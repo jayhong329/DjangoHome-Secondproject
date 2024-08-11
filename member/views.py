@@ -180,6 +180,9 @@ def write(request):
     # 已經登入
     # 將資料寫進Cookies
     response.set_cookie("is_login", True)
+
+    # 將資料寫進 Session
+    request.session["name"] = "Jay"
     # return render(request, "member/write.html", {"title": title})
     return response
 
@@ -188,5 +191,12 @@ def read(request):
     #  讀取Cookies
     is_login = request.COOKIES.get("is_login")
     print(is_login)
+
+    #  讀取Sessions
+    if "name" in request.session:
+        name = request.session["name"]
+    else:
+        name = "guest"
+    print(name)
 
     return render(request, "member/read.html", {"title": title})

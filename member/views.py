@@ -160,7 +160,7 @@ def edit(request):
     return render(request, "member/edit.html", {"member":member})
 
 # /delete/1
-def delete(request, id):
+def delete(request, id): 
     member = Member.objects.get(member_id=id)
     member.delete()
     return redirect('member:index')
@@ -172,5 +172,21 @@ def mobile(request):
 def formdemo(request):
     form = MemberForm()
     userForm = UserForm()
-    return render(request, "member/formdemo.html", locals() )
+    return render(request, "member/formdemo.html", locals())
 
+def write(request):
+    response = render(request, "member/write.html")
+    title = "cookie demo"
+    # 已經登入
+    # 將資料寫進Cookies
+    response.set_cookie("is_login", True)
+    # return render(request, "member/write.html", {"title": title})
+    return response
+
+def read(request):
+    title = "cookie demo"
+    #  讀取Cookies
+    is_login = request.COOKIES.get("is_login")
+    print(is_login)
+
+    return render(request, "member/read.html", {"title": title})

@@ -12,25 +12,35 @@
     -->
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div>
-            <input type="text" name="username" placeholder="請輸入姓名">
-        </div>
-        <div>
-            <input type="email" name="useremail" placeholder="請輸入電子郵件">
-        </div>
-        <div>
-            <input type="password" name="userpassword" placeholder="請輸入密碼">
-        </div>
-        <div>
-            <input type="date" name="userbirth" placeholder="請輸入生日">
-        </div>
-        <div>
-            <input type="file" name="userphoto" id="file"/>
+        <div class="mb-3">
+            <label for="username" class="form-label">姓名</label>
+            <input type="text" class="form-control" id="username" placeholder="請輸入姓名">
+          </div>
+        <div class="mb-3">
+            <label for="useremail" class="form-label">電子郵箱</label>
+            <input type="email" class="form-control" id="useremail" placeholder="請輸入電子郵箱">
+          </div>
+        <div class="mb-3">
+            <label for="userpassword" class="form-label">密碼</label>
+            <input type="password" class="form-control" id="userpassword" placeholder="請輸入密碼">
+          </div>
+          <div class="mb-3">
+            <label for="userpassword1" class="form-label">密碼確認</label>
+            <input type="password" class="form-control" id="userpassword" placeholder="再次輸入密碼">
+          </div>
+          <div class="mb-3">
+            <label for="userbirth" class="form-label">生日</label>
+            <input type="date" class="form-control" id="userbirth" placeholder="請輸入生日">
+          </div>
+          <div class="mb-3">
+            <label for="userphoto" class="form-label">大頭照上傳</label>
+            <input type="file" class="form-control" name="userphoto" id="userphoto" >
             <img id="img" src="{{MEDIA_URL}}{{ upload_file }}" alt="">
-        </div>
-        <button type="submit">註冊</button>
+          </div>
+        <button type="submit" class="btn btn-primary">註冊</button>
     </form>
 {% endblock %}
+
 
 {% block scripts %}
 <script>

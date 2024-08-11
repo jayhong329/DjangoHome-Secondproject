@@ -203,4 +203,13 @@ def read(request):
 
 
 def login(request):
+    if request.method == "POST":
+        # 接收表單傳過來的資料
+        member_name = request.POST.get("member_name")
+        member_password = request.POST.get("member_password")
+        remember_me = request.POST.get("remember_me")
+
+        print(member_name)
+        print(member_password)
+        print(remember_me)
     return render(request, "member/login.html")
